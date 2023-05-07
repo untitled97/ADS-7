@@ -13,7 +13,7 @@ class TPQueue {
     Item* head = nullptr;
     TPQueue::Item* create(const T&);
  public:
- 	TPQueue(){}
+    TPQueue() {}
     bool isEmpty()const {
         return head == nullptr;
     }
