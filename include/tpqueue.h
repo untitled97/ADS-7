@@ -10,9 +10,9 @@ class TPQueue {
         Item* next;
     };
     Item* head = nullptr;
-    Item* tail = nullptr;
     TPQueue::Item* create(const T&);
  public:
+ 	TPQueue() {}
     bool isEmpty()const {
         return head == nullptr;
     }
@@ -42,12 +42,21 @@ template<typename T>
 void TPQueue<T>::push(const T& value) {
     if (isEmpty()) {
         head = create(value);
-    } else if (head->value.prior < value.prior) {
-        Item* temp = new Item;
-        temp->value = value;
-        temp->next = head;
-        head = temp;
+    } else {
+        Item* temp = head;
+        Item* item = create(value);
+        if (head->value.prior < value.prior) {
+            item->next = head;
+            head = item;
+        } else {
+            while (temp->next != nullptr && \
+                   value.prior <= temp->next->value.prior)
+                temp = temp->next;
+            item->next = temp->next;
+            temp->next = item;
+        }
     }
+}
 
 template<typename T>
 typename TPQueue<T>::Item* TPQueue<T>::create(const T& value) {
