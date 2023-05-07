@@ -1,17 +1,18 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include <string>
 
 template<typename T>
 class TPQueue {
- private:
+  private:
     struct Item {
         T value;
         Item* next;
     };
     Item* head = nullptr;
     TPQueue::Item* create(const T&);
- public:
+  public:
  	TPQueue() {}
     bool isEmpty()const {
         return head == nullptr;
