@@ -5,15 +5,15 @@
 
 template<typename T>
 class TPQueue {
-  private:
+ private:
     struct Item {
         T value;
         Item* next;
     };
     Item* head = nullptr;
     TPQueue::Item* create(const T&);
-  public:
- 	TPQueue() {}
+ public:
+ 	TPQueue(){}
     bool isEmpty()const {
         return head == nullptr;
     }
